@@ -1,4 +1,4 @@
-# Vergara · Intelligent Logistics
+# Vergara Logística · Tienda mayorista y operaciones
 
 Prototipo académico mejorado a partir del ZIP proporcionado. HTML, CSS y JavaScript sin compilación ni dependencias web externas.
 
@@ -10,7 +10,15 @@ Desde `/workspace/Vergara`:
 python3 -m http.server 8000 --bind 0.0.0.0
 ```
 
-Abra la página servida en su navegador. También puede abrir `index.html` directamente. El panel inicia en Gerencia para explorar el prototipo; «Cambiar rol» permite probar Cliente, Ventas, Almacén y Repartidor.
+Abra `index.html` para visitar la tienda mayorista Vergara Logística. El acceso al panel operativo está en `gestion.html`: inicia en Gerencia para explorar el prototipo; «Cambiar rol» permite probar Cliente, Ventas, Almacén y Repartidor. También puede abrir los archivos directamente en un navegador, aunque se recomienda el servidor local.
+
+## Tienda y gestión
+
+- `index.html`: tienda con 8 productos, búsqueda, categorías, orden por precio o nombre, favoritos y carrito persistentes; selección de negocio y seguimiento de pedidos.
+- Identidad original Vergara Logística: logo SVG claro/oscuro, favicon, ocho empaques ilustrados y fuentes locales en `assets/`. Las licencias de fuentes y su procedencia están en `assets/fonts/`.
+- `gestion.html`: panel de operaciones, inventario, pedidos, distribución y laboratorio.
+- Ambos accesos usan los servicios originales y comparten `localStorage` cuando se sirven desde el mismo origen. Los pedidos de la tienda se pueden consultar y preparar en el panel.
+- Es una demostración: no incluye pago en línea ni cobros reales.
 
 ## Funcionalidades
 
@@ -42,6 +50,18 @@ python3 laboratorio/analisis_numpy.py
 También puede importar `laboratorio/Laboratorio_IA_NumPy.ipynb` en Google Colab. NumPy no es necesario para abrir la web.
 
 ## Validación
+
+Pruebas reproducibles con el servidor iniciado:
+
+```bash
+node tests/admin-smoke.cjs
+node tests/storefront-smoke.cjs
+```
+
+Requieren Playwright y Chromium; admiten `SITE_URL`, `PLAYWRIGHT_MODULE` y `CHROMIUM_PATH` para adaptar el entorno. La tienda se verificó en Chromium a 1440, 768 y 390 px, con búsqueda, categorías, orden, favoritos, carrito, validación de stock, checkout de demostración, descargas y seguimiento compartido con gestión. Sin errores JavaScript ni recursos fallidos.
+
+La tienda comparte inventario y pedidos con el panel, pero mantiene su propio carrito y favoritos. Al ampliar el catálogo se incorporan los nuevos productos sin alterar los stocks ni pedidos ya guardados.
+
 
 Probado con Chromium/Playwright: pedido de 10 unidades, stock descontado, preparación, entrega, persistencia al recargar, rechazo de salida excesiva, chatbot, navegación por roles, cambio de estadísticas y ausencia de desbordamiento horizontal a 390 px. Análisis ejecutado con NumPy 2.3.5. Capturas en `evidencias/`.
 

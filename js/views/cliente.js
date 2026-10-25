@@ -37,7 +37,7 @@ Vergara.views.cliente = function () {
         <h2>Resumen</h2>
         <div class="fila"><span>Ítems</span><b>${ped.cantidadCarrito()}</b></div>
         <div class="fila"><span>Total</span><b>${ui.moneda(ped.totalCarrito())}</b></div>
-        <div class="fila"><span>Entrega estimada</span><span>Mañana</span></div>
+        <div class="fila"><span>Entrega estimada</span><span>Por coordinar</span></div>
         <button class="btn ancho" data-action="confirmar-pedido">Confirmar pedido</button>
       </div>
       <div class="card"><h2>Mis pedidos</h2>${misPedidos}</div>

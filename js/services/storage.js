@@ -15,7 +15,15 @@ Vergara.storage = {
   cargar() {
     try {
       const datos = JSON.parse(localStorage.getItem(this.CLAVE));
-      if (datos && datos.productos) Object.assign(Vergara.state, datos);
+      if (datos && Array.isArray(datos.productos)) {
+        Object.assign(Vergara.state, datos);
+        // Amplía el catálogo sin cambiar los stocks ni pedidos guardados anteriormente.
+        Vergara.data.productos.forEach(producto => {
+          if (!Vergara.state.productos.some(p => p.codigo === producto.codigo)) {
+            Vergara.state.productos.push(JSON.parse(JSON.stringify(producto)));
+          }
+        });
+      }
     } catch (e) { /* datos inválidos: se usan los de fábrica */ }
   },
 

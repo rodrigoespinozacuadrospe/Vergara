@@ -18,13 +18,13 @@ Vergara.chatbot = {
 
     if (/pedido|estado|seguimiento|mi orden/.test(t)) {
       const propios = s.pedidos.filter(p => p.clienteIdx === s.clienteSeleccionado);
-      if (!propios.length) return "Aún no tiene pedidos registrados. Puede crear uno en el Portal de Clientes.";
+      if (!propios.length) return "Aún no tiene pedidos registrados. Puede preparar uno en la tienda o en el Portal de Clientes.";
       const u = propios[propios.length - 1];
       return `Su último pedido es el #${u.id} por ${Vergara.ui.moneda(u.total)}. Estado: ${u.estado}.`;
     }
 
     if (/horario|entrega|envio|cuando|demora/.test(t))
-      return "Entregamos al día siguiente de confirmado el pedido, de lunes a sábado. Recibirá avisos del avance de su entrega.";
+      return "La fecha, cobertura y tarifa de entrega se coordinan con el distribuidor. Este prototipo permite simular pedidos y su seguimiento, pero no programa envíos reales.";
 
     return "No entendí su consulta. Puede preguntarme, por ejemplo: \"¿Hay arroz?\", \"Estado de mi pedido\" u \"Horario de entrega\".";
   }

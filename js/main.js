@@ -65,6 +65,6 @@
   });
 
   Vergara.storage.cargar();
-  s.rol = "gerencia"; s.pestana = "dashboard";
+  s.rol = "gerencia"; s.pestana = new URLSearchParams(location.search).get("modulo") === "laboratorio" ? "laboratorio" : "dashboard";
   render();
 })();

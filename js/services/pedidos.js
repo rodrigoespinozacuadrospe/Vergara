@@ -36,7 +36,7 @@ Vergara.pedidos = {
     pedido.items.forEach(i => Vergara.inventario.mover(s.productos.find(p => p.codigo === i.codigo), -i.cantidad, "Venta pedido #" + pedido.id));
     s.pedidos.push(pedido);
     s.carrito = {};
-    Vergara.notificaciones.agregar(pedido.clienteIdx, `Pedido #${pedido.id} confirmado (${Vergara.ui.moneda(pedido.total)}). Entrega estimada: mañana.`);
+    Vergara.notificaciones.agregar(pedido.clienteIdx, `Pedido #${pedido.id} confirmado (${Vergara.ui.moneda(pedido.total)}). Entrega: por coordinar (demostración).`);
     return { ok: true, mensaje: `Pedido #${pedido.id} confirmado. Stock actualizado.` };
   },
 

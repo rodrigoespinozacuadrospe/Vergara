@@ -8,7 +8,10 @@ Vergara.data = {
     { codigo: "7750002", nombre: "Aceite 1 L",   precio: 9.5,  stock: 34,  reorden: 40, historial: [22, 25, 24, 30, 28, 33] },
     { codigo: "7750003", nombre: "Azúcar 1 kg",  precio: 4.2,  stock: 90,  reorden: 50, historial: [40, 38, 45, 42, 47, 44] },
     { codigo: "7750004", nombre: "Fideos 500 g", precio: 3.1,  stock: 55,  reorden: 50, historial: [50, 48, 52, 55, 53, 60] },
-    { codigo: "7750005", nombre: "Leche 400 g",  precio: 4.8,  stock: 18,  reorden: 30, historial: [35, 30, 34, 38, 36, 40] }
+    { codigo: "7750005", nombre: "Leche 400 g",  precio: 4.8,  stock: 18,  reorden: 30, historial: [35, 30, 34, 38, 36, 40] },
+    { codigo: "7750006", nombre: "Café 250 g", precio: 12.5, stock: 64, reorden: 20, historial: [14, 17, 15, 18, 21, 19] },
+    { codigo: "7750007", nombre: "Detergente 800 g", precio: 8.9, stock: 80, reorden: 25, historial: [20, 22, 25, 24, 21, 28] },
+    { codigo: "7750008", nombre: "Galletas 6 unidades", precio: 6.5, stock: 96, reorden: 30, historial: [25, 28, 30, 27, 32, 34] }
   ],
   // x, y = coordenadas ficticias en km respecto al almacén (0,0)
   clientes: [
