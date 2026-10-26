@@ -1,0 +1,15 @@
+Local font assets from the official Fontsource npm packages. HTTPS/TLS and npm SHA-512 integrity verified. Latin subset, variable weight, normal style.
+
+@fontsource-variable/manrope@5.3.0
+Source: https://registry.npmjs.org/@fontsource-variable/manrope/-/manrope-5.3.0.tgz
+Integrity: sha512-6D5dgokHsWDDMtmXHznKa0hK229NN+1a4BLPmUCLqcO1Pw5EEhWY5RFt0AcXnVRAljFFPfRtLkJePQj6LSsV6g==
+Saved file: manrope-latin-wght-normal.woff2
+SHA-256: a30ddcd349703aff7464c34bef3fffdff405ee50c113440d7c8693c02d210972
+License: manrope-LICENSE.txt
+
+@fontsource-variable/dm-sans@5.3.0
+Source: https://registry.npmjs.org/@fontsource-variable/dm-sans/-/dm-sans-5.3.0.tgz
+Integrity: sha512-BpUG5bqePiDFMBM4ZtLSlPdAIOM990uB1dlXzIf4aw21yQR7BmykedLXXXMqGWsR18aMLOsbWccwJNh3ztTQaA==
+Saved file: dm-sans-latin-wght-normal.woff2
+SHA-256: 9fea608a947e67020c33cad9a6fe3d60c54119dfb8cff87768a8117a15ed7543
+License: dm-sans-LICENSE.txt

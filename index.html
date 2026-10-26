@@ -2,42 +2,46 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
+  <script>
+    // Ensure window.fetch is writable and has a setter so extensions and test harnesses can safely wrap or mock it
+    (function () {
+      try {
+        let currentFetch = window.fetch ? window.fetch.bind(window) : undefined;
+        Object.defineProperty(window, 'fetch', {
+          get: function () {
+            return currentFetch;
+          },
+          set: function (newFetch) {
+            currentFetch = newFetch;
+          },
+          configurable: true,
+          enumerable: true
+        });
+      } catch (e) {
+        // Fallback to value definition if getters fail
+        try {
+          if (window.fetch) {
+            Object.defineProperty(window, 'fetch', {
+              value: window.fetch.bind(window),
+              writable: true,
+              configurable: true,
+              enumerable: true
+            });
+          }
+        } catch (err) {}
+      }
+    })();
+  </script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#143e3d">
-  <meta name="description" content="Vergara Logística. Abarrotes, desayunos y limpieza para abastecer tu negocio. Explora el catálogo mayorista y prepara tu pedido.">
+  <meta name="description" content="Vergara Logística · Todo para tu negocio. Distribución mayorista inteligente y centro de operaciones.">
+  <meta property="og:title" content="Vergara Logística · Todo para tu negocio">
+  <meta property="og:description" content="Vergara Logística · Todo para tu negocio. Distribución mayorista inteligente y centro de operaciones.">
   <title>Vergara Logística · Todo para tu negocio</title>
-  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="css/tienda.css">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
 </head>
 <body>
-  <a href="#catalogo" class="skip-link">Ir al catálogo</a>
-  <div class="utility-bar"><div class="container"><span>Tu negocio crece. Nosotros lo movemos.</span><span>Compra fácil · Precios en soles <span class="utility-divider">|</span> <a href="gestion.html">Centro de operaciones <span data-icon="external"></span></a></span></div></div>
-  <header class="shop-header">
-    <div class="container header-main">
-      <a class="shop-brand" href="index.html" aria-label="Vergara Logística, inicio"><img src="assets/logo-light.svg" width="190" height="54" alt="Vergara Logística"></a>
-      <button class="delivery-button" data-shop="location"><span data-icon="pin"></span><span><small>Estamos cerca de ti</small><b>Lima, Perú <span class="tiny-chevron">⌄</span></b></span></button>
-      <form class="search-form" role="search" id="search-form"><label class="sr-only" for="search-category">Categoría de búsqueda</label><select id="search-category"><option value="Todos">Todo</option><option>Abarrotes</option><option>Desayunos</option><option>Limpieza</option></select><label class="sr-only" for="search-input">Buscar productos</label><input id="search-input" type="search" placeholder="¿Qué necesita tu negocio hoy?" autocomplete="off"><button type="submit" aria-label="Buscar productos"><span data-icon="search"></span></button></form>
-      <button class="header-button account-button" data-shop="account"><span data-icon="user"></span><span><small>Hola, bienvenido</small><b>Mi negocio</b></span></button>
-      <button class="header-button orders-button" data-shop="orders"><span data-icon="box"></span><span><small>Consulta tus</small><b>Pedidos</b></span></button>
-      <button class="header-cart" data-shop="cart" aria-label="Abrir carrito"><span class="cart-icon"><span data-icon="cart"></span><b id="cart-count">0</b></span><span>Mi carrito</span></button>
-    </div>
-  </header>
-  <div class="category-nav"><nav class="container" aria-label="Categorías"><button class="all-categories is-active" data-shop="category" data-category="Todos"><span data-icon="menu"></span> Todas las categorías</button><span class="nav-separator"></span><button data-shop="category" data-category="Abarrotes">Abarrotes</button><button data-shop="category" data-category="Desayunos">Desayunos</button><button data-shop="category" data-category="Limpieza">Limpieza y hogar</button><button data-shop="favorites"><span data-icon="heart"></span> Mi lista</button><button data-shop="orders">Sigue tu pedido</button><span class="nav-message"><span class="status-dot"></span> Tu aliado mayorista</span></nav></div>
-  <main>
-    <section class="hero container" aria-labelledby="hero-title">
-      <div class="hero-copy"><span class="eyebrow"><span></span> DE NUESTRO ALMACÉN A TU NEGOCIO</span><h1 id="hero-title">Todo lo que necesitas.<br><em>Mucho más cerca.</em></h1><p>Abastece tu negocio con tus productos de siempre.<br>Elige, agrega y deja la logística en nuestras manos.</p><div class="hero-actions"><a class="button button-primary" href="#catalogo">Explorar productos <span data-icon="arrow-right"></span></a><button class="hero-secondary" data-shop="how">Así de fácil funciona <span data-icon="external"></span></button></div><div class="hero-note"><span data-icon="shield"></span> Precios claros. Stock a la vista. Pedidos sin complicaciones.</div></div>
-      <div class="hero-scene" aria-label="Selección de productos Vergara: arroz, aceite, café y leche" role="img"><div class="scene-circle"></div><div class="scene-orbit"></div><div class="scene-plinth back-plinth"></div><div class="scene-plinth front-plinth"></div><img class="hero-pack hero-rice" src="assets/arroz.svg" alt="" fetchpriority="high"><img class="hero-pack hero-oil" src="assets/aceite.svg" alt="" fetchpriority="high"><img class="hero-pack hero-coffee" src="assets/cafe.svg" alt=""><img class="hero-pack hero-milk" src="assets/leche.svg" alt=""><div class="hero-sticker"><span data-icon="box"></span><span>Tu próximo pedido.<b>Un nuevo impulso.</b></span></div><div class="scene-spark spark-one"><span data-icon="spark"></span></div><div class="scene-spark spark-two"><span data-icon="spark"></span></div><span class="scene-caption">SELECCIÓN VERGARA · CALIDAD PARA TU DÍA A DÍA</span></div>
-    </section>
-    <section class="benefits container" aria-label="Ventajas de comprar en Vergara"><div><span class="benefit-icon" data-icon="truck"></span><span><b>Logística que te acompaña</b><small>Coordina la entrega de tu pedido</small></span></div><div><span class="benefit-icon" data-icon="box"></span><span><b>Compra a tu medida</b><small>Por unidad o para todo tu negocio</small></span></div><div><span class="benefit-icon" data-icon="shield"></span><span><b>Todo bajo control</b><small>Disponibilidad antes de comprar</small></span></div><div><span class="benefit-icon" data-icon="chat"></span><span><b>Estamos para ayudarte</b><small>Consulta productos y pedidos</small></span></div></section>
-    <section class="category-section container" aria-labelledby="category-title"><div class="section-heading"><div><span class="eyebrow">ENCUENTRA LO QUE BUSCAS</span><h2 id="category-title">Cada negocio, una necesidad.</h2></div><a href="#catalogo" class="text-link">Ver todo el catálogo <span data-icon="arrow-right"></span></a></div><div class="category-tiles"><button data-shop="category" data-category="Abarrotes" class="category-tile tile-grocery"><div><small>LO QUE NUNCA DEBE FALTAR</small><h3>Abarrotes</h3><span>Para llenar tus estantes <span data-icon="arrow-right"></span></span></div><img src="assets/arroz.svg" alt="" loading="lazy"><img src="assets/fideos.svg" alt="" loading="lazy"></button><button data-shop="category" data-category="Desayunos" class="category-tile tile-breakfast"><div><small>UN BUEN COMIENZO</small><h3>Desayunos</h3><span>Esenciales de cada mañana <span data-icon="arrow-right"></span></span></div><img src="assets/cafe.svg" alt="" loading="lazy"><img src="assets/leche.svg" alt="" loading="lazy"></button><button data-shop="category" data-category="Limpieza" class="category-tile tile-cleaning"><div><small>TODO EN SU LUGAR</small><h3>Limpieza y hogar</h3><span>Cuida cada espacio <span data-icon="arrow-right"></span></span></div><img src="assets/detergente.svg" alt="" loading="lazy"></button></div></section>
-    <section id="catalogo" class="catalog-section container" aria-labelledby="catalog-title"><div class="section-heading catalog-heading"><div><span class="eyebrow">BIEN ELEGIDO. BIEN ABASTECIDO.</span><h2 id="catalog-title">Lo esencial para tu negocio.</h2><p id="catalog-description">Una selección práctica, con precios que puedes ver desde el primer momento.</p></div><label class="sort-label" for="sort-products">Ordenar por <select id="sort-products"><option value="recommended">Recomendados</option><option value="price-low">Menor precio</option><option value="price-high">Mayor precio</option><option value="name">Nombre: A–Z</option></select></label></div><div class="catalog-toolbar"><div class="filter-tabs" role="group" aria-label="Filtrar productos"><button class="selected" data-shop="category" data-category="Todos" aria-pressed="true">Todos los productos</button><button data-shop="category" data-category="Abarrotes" aria-pressed="false">Abarrotes</button><button data-shop="category" data-category="Desayunos" aria-pressed="false">Desayunos</button><button data-shop="category" data-category="Limpieza" aria-pressed="false">Limpieza</button></div><span id="results-count" aria-live="polite">8 productos</span></div><div id="active-search"></div><div class="product-grid" id="product-grid"></div></section>
-    <section class="business-banner container"><div class="banner-monogram" aria-hidden="true">V<span><span data-icon="arrow-right"></span></span></div><div><span class="eyebrow">TÚ PONES LAS GANAS. NOSOTROS, EL ABASTECIMIENTO.</span><h2>Un gran aliado para tu pequeño gran negocio.</h2><p>Desde tu primera compra hasta tu próximo gran pedido. Hagámoslo juntos.</p></div><button class="button button-light" data-shop="account">Mi negocio en Vergara <span data-icon="arrow-right"></span></button></section>
-    <section class="how-section container" id="como-funciona"><div class="section-heading"><div><span class="eyebrow">MENOS VUELTAS. MÁS NEGOCIO.</span><h2>Tu pedido, en tres pasos.</h2></div><span class="how-caption">Así de simple, así de Vergara.</span></div><div class="how-grid"><article><span class="step-number">01</span><div><h3>Encuentra tus productos</h3><p>Explora el catálogo o busca lo que necesitas para reponer tus estantes.</p></div></article><article><span class="step-number">02</span><div><h3>Arma tu pedido</h3><p>Agrega las cantidades y revisa tu total antes de confirmar.</p></div></article><article><span class="step-number">03</span><div><h3>Sigue cada paso</h3><p>Consulta la preparación y entrega desde la sección de pedidos.</p></div></article></div></section>
-  </main>
-  <footer class="shop-footer"><div class="container footer-main"><div class="footer-brand"><img src="assets/logo-light.svg" width="190" height="54" alt="Vergara Logística"><p>Movemos productos.<br>Impulsamos negocios.</p><span>Lima, Perú</span></div><div><h3>Tu compra</h3><a href="#catalogo">Explorar catálogo</a><button data-shop="cart">Mi carrito</button><button data-shop="orders">Seguimiento de pedidos</button></div><div><h3>Estamos contigo</h3><button data-shop="how">Cómo comprar</button><button data-shop="help">Centro de ayuda</button><button data-shop="location">Entregas y cobertura</button></div><div><h3>Vergara por dentro</h3><a href="gestion.html">Centro de operaciones <span data-icon="external"></span></a><a href="gestion.html?modulo=laboratorio">Laboratorio de IA y NumPy <span data-icon="external"></span></a><a href="assets/logo.svg" download="vergara-logistica-logo.svg">Descargar nuestro logo <span data-icon="arrow-right" class="download-arrow"></span></a></div></div><div class="container footer-bottom"><span>© <span id="year"></span> Vergara Logística · Distribuidora Vergara S.A.C.</span><span>Prototipo académico · Precios y productos de demostración · Sin cobros ni envíos reales</span></div></footer>
-  <button class="help-float" data-shop="help" aria-label="Abrir asistente de ayuda"><span data-icon="chat"></span></button>
-  <dialog id="shop-dialog" aria-labelledby="dialog-title"><div class="dialog-header"><h2 id="dialog-title"></h2><button class="icon-button" data-shop="close" aria-label="Cerrar ventana"><span data-icon="close"></span></button></div><div id="dialog-body"></div></dialog>
-  <div id="toast" class="shop-toast" role="status" aria-live="polite"></div>
-  <script src="js/data.js"></script><script src="js/state.js"></script><script src="js/ui.js"></script><script src="js/services/storage.js"></script><script src="js/services/notificaciones.js"></script><script src="js/services/inventario.js"></script><script src="js/services/prediccion.js"></script><script src="js/services/pedidos.js"></script><script src="js/services/chatbot.js"></script><script src="js/tienda.js"></script>
+  <div id="root"></div>
+  <script type="module" src="/src/main.tsx"></script>
 </body>
 </html>

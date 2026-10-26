@@ -1,0 +1,8 @@
+{
+  "name": "Vergara Logística",
+  "description": "Distribución mayorista inteligente y centro de operaciones: catálogo, pedidos, control de inventario EOQ, optimización de rutas y laboratorio analítico.",
+  "permissions": [],
+  "capabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
