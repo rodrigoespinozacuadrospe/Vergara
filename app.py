@@ -107,12 +107,24 @@ def create_app(config=None):
             abort(403, description="El rol seleccionado no tiene acceso a esta función.")
 
     def page(template, title, **context):
+        cart_items = session.get("cart", {})
         context.update(
-            title=title, cart_count=sum(session.get("cart", {}).values()),
+            title=title, cart_count=sum(cart_items.values()), cart_items=cart_items,
+            cart_total=sum(p["price"] * cart_items.get(p["code"], 0) for p in store.products()),
             role=session.get("role"), modules=allowed_modules(),
         )
         body = render_template_string(template, **context)
         return render_template_string(ui.BASE, body=Markup(body), **context)
+
+    def catalog_destination():
+        """Conserva los filtros al comprar sin aceptar redirecciones externas."""
+        if request.form.get("return_to") == "cliente" and "cliente" in allowed_modules():
+            return url_for("operations", module="cliente")
+        return url_for("shop", q=request.form.get("q", "")[:200],
+                       category=request.form.get("category", "Todos"),
+                       sort=request.form.get("sort", "recommended"),
+                       favorites="1" if request.form.get("only_favorites") == "1" else "0",
+                       _anchor="catalogo")
 
     def product_by_code(code):
         product = next((p for p in store.products() if p["code"] == code), None)
@@ -166,7 +178,7 @@ def create_app(config=None):
         product_by_code(code)
         favorites = session.get("favorites", [])
         session["favorites"] = [c for c in favorites if c != code] if code in favorites else favorites + [code]
-        return redirect(url_for("shop", favorites=request.form.get("only_favorites", "0")))
+        return redirect(catalog_destination())
 
     @app.post("/cart/add/<code>")
     def cart_add(code):
@@ -181,7 +193,7 @@ def create_app(config=None):
                 raise ValueError(f"Stock insuficiente para {product['name']}.")
             cart[code] = result
             session["cart"] = cart
-        return action(add, url_for("shop", _anchor="catalogo"), "Producto agregado al carrito.")
+        return action(add, catalog_destination(), "Producto agregado al carrito.")
 
     @app.post("/cart/update/<code>")
     def cart_update(code):
@@ -197,6 +209,20 @@ def create_app(config=None):
                 cart.pop(code, None)
             session["cart"] = cart
         return action(update, url_for("cart"), "Carrito actualizado.")
+
+    @app.post("/cart/remove/<code>")
+    def cart_remove(code):
+        cart = session.get("cart", {}).copy()
+        cart.pop(code, None)
+        session["cart"] = cart
+        flash("Producto retirado del carrito.", "success")
+        return redirect(url_for("cart"))
+
+    @app.post("/cart/clear")
+    def cart_clear():
+        session["cart"] = {}
+        flash("Carrito vaciado. Puedes empezar un nuevo pedido.", "success")
+        return redirect(url_for("cart"))
 
     @app.get("/cart")
     def cart():
@@ -282,12 +308,20 @@ def create_app(config=None):
         query = normalized(message)
         products = store.products()
         matched = [p for p in products if normalized(p["name"].split()[0]) in query]
-        if matched:
+        if "reposicion" in query or "reponer" in query or "stock bajo" in query:
+            low = [p for p in products if p["stock"] <= p["reorder"]]
+            response = "Necesitan reposición: " + "; ".join(f"{p['name']} ({p['stock']} unidades; reorden {p['reorder']})" for p in low) if low else "Todos los productos están por encima de su punto de reorden."
+        elif matched:
             response = " · ".join(f"{p['name']}: {money(p['price'])}, {p['stock']} unidades disponibles" for p in matched)
         elif "stock" in query or "inventario" in query:
             response = f"Tenemos {sum(p['stock'] for p in products)} unidades. Consulta Control de inventario para ver el detalle."
         elif "pedido" in query:
-            response = "Confirma tu carrito en la tienda. Puedes seguir tus pedidos en Mis pedidos; Almacén los prepara y Distribución registra la entrega."
+            current_orders = store.orders()
+            counts = {status: sum(o["status"] == status for o in current_orders) for status in ("Pendiente", "Listo", "Entregado")}
+            response = (f"Pedidos pendientes: {counts['Pendiente']}; listos: {counts['Listo']}; entregados: {counts['Entregado']}. "
+                        "Consulta Mis pedidos para seguir tus compras.")
+        elif "producto" in query or "catalogo" in query:
+            response = "Nuestro catálogo: " + "; ".join(f"{p['name']} ({money(p['price'])})" for p in products) + "."
         elif "entrega" in query or "ruta" in query:
             response = "Coordinamos entregas en Lima. Los pedidos preparados se ordenan por cercanía desde el almacén."
         else:
@@ -337,6 +371,17 @@ def create_app(config=None):
     @app.get("/health")
     def health():
         return {"status": "ok", "products": len(store.products())}
+
+    def friendly_error(error):
+        titles = {400: "Vamos a intentarlo otra vez", 403: "Elige otro espacio de trabajo", 404: "Este camino no lleva a la tienda"}
+        descriptions = {400: "El formulario no se pudo enviar. Abre de nuevo la pantalla y vuelve a intentarlo.",
+                        403: "Tu rol actual no incluye esta sección. Puedes cambiar de rol en la demostración.",
+                        404: "La página que buscas no está disponible. Puedes volver al catálogo y seguir explorando."}
+        return page(ui.ERROR, titles[error.code], error_code=error.code,
+                    error_title=titles[error.code], error_description=descriptions[error.code]), error.code
+
+    for code in (400, 403, 404):
+        app.register_error_handler(code, friendly_error)
 
     return app
 

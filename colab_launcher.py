@@ -23,6 +23,11 @@ SETUP = dedent('''\
         ], check=True)
     elif not (PROJECT_DIR / ".git").is_dir():
         raise RuntimeError("/content/Vergara ya existe y no es un repositorio. No se sobrescribió.")
+    else:
+        # Actualiza sin resetear ni descartar cambios locales.
+        subprocess.run([
+            "git", "-C", str(PROJECT_DIR), "pull", "--ff-only", "origin", "main",
+        ], check=True)
 
     subprocess.run([
         sys.executable, "-m", "pip", "install", "--quiet",

@@ -6,6 +6,7 @@ import json
 from pathlib import Path
 import tempfile
 import unittest
+from urllib.parse import parse_qs, urlsplit
 
 from app import create_app
 from store import Store
@@ -161,6 +162,60 @@ class AppTests(unittest.TestCase):
         html = response.get_data(as_text=True)
         self.assertNotIn(payload, html)
         self.assertIn("&lt;script&gt;", html)
+
+    def test_catalog_actions_preserve_filters_and_workspace(self):
+        fields = {"q": "arroz", "category": "Abarrotes", "sort": "price-low", "only_favorites": "1"}
+        response = self.post("/favorites/7750001", fields, follow=False)
+        location = urlsplit(response.headers["Location"])
+        self.assertEqual(location.path, "/")
+        self.assertEqual(parse_qs(location.query), {"q": ["arroz"], "category": ["Abarrotes"], "sort": ["price-low"], "favorites": ["1"]})
+        response = self.post("/cart/add/7750001", {**fields, "quantity": "3"}, follow=False)
+        self.assertEqual(parse_qs(urlsplit(response.headers["Location"]).query)["q"], ["arroz"])
+        with self.client.session_transaction() as state:
+            self.assertEqual(state["cart"]["7750001"], 3)
+        self.role("ventas")
+        response = self.post("/cart/add/7750001", {"quantity": "1", "return_to": "cliente"}, follow=False)
+        self.assertEqual(response.headers["Location"], "/operations/cliente")
+        response = self.post("/cart/add/7750001", {"quantity": "1", "return_to": "https://example.com"}, follow=False)
+        self.assertFalse(urlsplit(response.headers["Location"]).netloc)
+
+    def test_remove_and_clear_cart_never_change_inventory(self):
+        self.post("/cart/add/7750001", {"quantity": "3"})
+        self.post("/cart/add/7750002", {"quantity": "2"})
+        self.assertEqual(self.client.post("/cart/clear").status_code, 400)
+        self.post("/cart/remove/7750001")
+        with self.client.session_transaction() as state:
+            self.assertEqual(state["cart"], {"7750002": 2})
+        self.post("/cart/clear")
+        with self.client.session_transaction() as state:
+            self.assertEqual(state["cart"], {})
+        self.assertEqual(self.stock(), 120)
+        self.assertEqual(self.store.movements(), [])
+
+    def test_assistant_uses_current_reorder_and_order_data(self):
+        self.role("gerencia")
+        self.post("/assistant", {"message": "¿Qué productos necesitan reposición?"})
+        with self.client.session_transaction() as state:
+            reply = state["messages"][-1]["text"]
+            self.assertIn("Aceite vegetal", reply)
+            self.assertIn("Leche evaporada", reply)
+            self.assertNotIn("Arroz extra", reply)
+        self.store.adjust_stock("7750002", 100)
+        self.post("/assistant", {"message": "¿Qué productos necesitan reposición?"})
+        with self.client.session_transaction() as state:
+            self.assertNotIn("Aceite vegetal", state["messages"][-1]["text"])
+        self.place_order()
+        self.post("/assistant", {"message": "¿Cómo van los pedidos?"})
+        with self.client.session_transaction() as state:
+            self.assertIn("pendientes: 1", state["messages"][-1]["text"])
+
+    def test_errors_offer_a_recovery_path(self):
+        response = self.client.get("/pagina-inexistente")
+        self.assertEqual(response.status_code, 404)
+        self.assertIn("Volver a la tienda", response.text)
+        response = self.client.post("/checkout", data={"client_id": "0"})
+        self.assertEqual(response.status_code, 400)
+        self.assertIn("Elegir mi espacio", response.text)
 
     def test_numpy_comparison_and_downloads(self):
         self.role("gerencia")

@@ -27,11 +27,14 @@ En Windows, activa el entorno con `.venv\Scripts\activate`.
 
 Colab instala las dependencias, inicia Gunicorn y ofrece acceso a la aplicación desde la sesión del cuaderno. Mantén la sesión conectada: el enlace y los datos son temporales, no un despliegue permanente. No necesitas configurar Render para esta opción.
 
+Para recibir mejoras en una sesión ya abierta, vuelve a ejecutar todas las celdas: el instalador actualiza el repositorio con `git pull --ff-only` y el arranque reinicia únicamente el servidor del cuaderno. Los cambios locales incompatibles detienen la actualización, sin descartarlos.
+
 El cuaderno de arranque se genera con `python colab_launcher.py`; sus celdas también son Python. GitHub excluye ese artefacto generado del cálculo de lenguajes. El acceso a la ventana depende de Colab y se verifica al ejecutarlo allí; las celdas de arranque se probaron con el servidor local.
 
 ## Qué incluye
 
 - **Tienda:** ocho productos ilustrados, búsqueda, categorías, favoritos, ordenamiento, carrito con cantidades y stock, selección de cliente y seguimiento de los pedidos de la sesión.
+- **Compra sin perder el contexto:** cantidades desde el catálogo, conservación de filtros al agregar o guardar favoritos, resumen fijo del carrito en móviles y eliminación explícita de productos. Vaciar el carrito requiere confirmación; el stock solo se reserva al confirmar el pedido.
 - **Resumen general:** ventas, pedidos, entregas, alertas de stock y demanda estimada.
 - **Nuevo pedido y ventas:** registro de pedidos, filtro por estado y ventas por cliente.
 - **Inventario:** entradas y salidas por código, kardex, reposición EOQ y preparación de pedidos.
