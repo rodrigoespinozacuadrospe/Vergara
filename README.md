@@ -61,3 +61,11 @@ Las pruebas usan bases temporales: validan pedidos, inventario, persistencia, pe
 ## Publicación
 
 GitHub conserva el código. **GitHub Pages no ejecuta aplicaciones Python/Flask**: para publicar la tienda se necesita un servidor con Python y almacenamiento persistente para SQLite. `python app.py` es el servidor de desarrollo; un despliegue público debe usar un servidor WSGI, HTTPS y configuración de producción.
+
+### Demostración en Render
+
+[Desplegar en Render](https://render.com/deploy?repo=https://github.com/rodrigoespinozacuadrospe/Vergara)
+
+El repositorio incluye `render.yaml` para preparar un servicio gratuito con Gunicorn y una clave de sesión generada por Render. Abre el enlace, inicia sesión y aplica el Blueprint. Cuando termine el despliegue, Render mostrará la dirección pública del servicio. Este enlace abre la configuración; no es una aplicación ya desplegada.
+
+**El plan gratuito es para demostración:** puede suspenderse por inactividad y su almacenamiento es temporal. Los pedidos y cambios de inventario de SQLite se pierden al reiniciar o desplegar de nuevo. Para conservar datos utiliza almacenamiento persistente y cambia la ruta de la base de datos. La selección de roles sigue siendo de demostración.
