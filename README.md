@@ -17,6 +17,18 @@ El servidor escucha en el puerto **3000**. Para cambiarlo, utiliza la variable `
 
 En Windows, activa el entorno con `.venv\Scripts\activate`.
 
+## Ejecutar en Google Colab
+
+[Abrir Vergara en Google Colab](https://colab.research.google.com/github/rodrigoespinozacuadrospe/Vergara/blob/main/colab/Ejecutar_Vergara.ipynb)
+
+1. Abre el cuaderno y conecta el entorno de ejecución.
+2. Selecciona **Entorno de ejecución → Ejecutar todas**.
+3. Pulsa **Abrir tienda Vergara** al terminar las celdas.
+
+Colab instala las dependencias, inicia Gunicorn y ofrece acceso a la aplicación desde la sesión del cuaderno. Mantén la sesión conectada: el enlace y los datos son temporales, no un despliegue permanente. No necesitas configurar Render para esta opción.
+
+El cuaderno de arranque se genera con `python colab_launcher.py`; sus celdas también son Python. GitHub excluye ese artefacto generado del cálculo de lenguajes. El acceso a la ventana depende de Colab y se verifica al ejecutarlo allí; las celdas de arranque se probaron con el servidor local.
+
 ## Qué incluye
 
 - **Tienda:** ocho productos ilustrados, búsqueda, categorías, favoritos, ordenamiento, carrito con cantidades y stock, selección de cliente y seguimiento de los pedidos de la sesión.
