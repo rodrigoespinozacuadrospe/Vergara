@@ -1,44 +1,63 @@
-# Vergara Logística · Tienda mayorista y operaciones
+# Vergara Logística · Python + Bootstrap
 
-Aplicación moderna desarrollada en **React 18 + TypeScript + Vite**, adaptada fielmente a partir del prototipo original. Integra la tienda mayorista para clientes y el centro de operaciones con control de acceso por roles.
+Tienda mayorista y centro de operaciones desarrollados en **Python 3.12+, Flask y Bootstrap 5**. Diseño rojo y blanco, adaptable a móviles. No requiere Node, npm, React, TypeScript ni compilación de frontend.
 
-## Ejecución del proyecto
+Todo el código de la aplicación está en archivos Python. Las plantillas y la personalización visual se generan desde `ui.py`; Bootstrap se sirve localmente desde el paquete `Bootstrap-Flask`, sin CDN ni conexión a Internet durante el uso. El navegador recibe HTML, CSS y los componentes de Bootstrap, como en cualquier interfaz web.
 
-Para iniciar el servidor de desarrollo en el puerto 3000:
-
-```bash
-npm install
-npm run dev
-```
-
-Para compilar la aplicación para producción:
+## Instalar y ejecutar
 
 ```bash
-npm run build
+python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install -r requirements.lock
+python app.py
 ```
 
-## Arquitectura y Módulos
+El servidor escucha en el puerto **3000**. Para cambiarlo, utiliza la variable `PORT`.
 
-### 1. Tienda Mayorista (`Storefront`)
-- Catálogo completo con 8 productos mayoristas ilustrados.
-- Filtros por categorías (Abarrotes, Desayunos, Limpieza y hogar).
-- Filtro de favoritos («Mi lista») y buscador en tiempo real.
-- Ordenamiento por recomendados, menor/mayor precio y alfabético.
-- Carrito de compras interactivo con validación de stock y selector de cliente.
-- Seguimiento visual de pedidos con historial por cliente.
-- Asistente de consultas integrado con respuestas automáticas por palabras clave.
+En Windows, activa el entorno con `.venv\Scripts\activate`.
 
-### 2. Centro de Operaciones (`Operations Center`)
-- **Control de acceso por roles (RBAC)**:
-  - *Cliente*: Nuevo pedido y Asistente virtual.
-  - *Ventas*: Nuevo pedido y Panel de Ventas por cliente.
-  - *Almacén*: Inventario en tiempo real, registro por código de barras, picking y reposición EOQ.
-  - *Repartidor*: Distribución y seguimiento de rutas optimizadas.
-  - *Gerencia*: Acceso completo a todos los módulos y KPIs globales.
-- **Resumen general (Dashboard)**: Ventas acumuladas, pedidos totales, porcentaje de entregas, alertas de stock bajo y proyección de demanda a 30 días.
-- **Distribución**: Cálculo de ruta optimizada mediante el algoritmo del vecino más cercano (TSP) desde el almacén (0,0), visualización en mapa esquemático SVG y confirmación de entregas con firma digital y foto.
-- **Laboratorio de IA y NumPy**: Análisis estadístico interactivo de minutos de reproducción de 12 usuarios, alternancia dinámica para excluir el valor atípico (U7: 300 min), visualización de métricas (Media, Mediana, Desviación Estándar con ddof=0) y descarga de scripts de solución en Python y cuadernos Jupyter.
+## Qué incluye
 
-### 3. Persistencia de Datos
-- Sincronización continua de inventario, pedidos, movimientos de almacén (kardex), notificaciones y carritos en `localStorage`.
-- Exportación directa de pedidos, inventario e historial de movimientos a formato CSV.
+- **Tienda:** ocho productos ilustrados, búsqueda, categorías, favoritos, ordenamiento, carrito con cantidades y stock, selección de cliente y seguimiento de los pedidos de la sesión.
+- **Resumen general:** ventas, pedidos, entregas, alertas de stock y demanda estimada.
+- **Nuevo pedido y ventas:** registro de pedidos, filtro por estado y ventas por cliente.
+- **Inventario:** entradas y salidas por código, kardex, reposición EOQ y preparación de pedidos.
+- **Distribución:** ruta por vecino más cercano, mapa esquemático, nombre del receptor y confirmación de foto tomada. Esta última es una constancia de demostración; no se suben fotografías ni se capturan firmas manuscritas.
+- **Asistente:** respuestas locales por palabras clave sobre productos, precios, stock, pedidos y entregas. No utiliza una API de IA.
+- **Laboratorio NumPy:** media, mediana, desviación poblacional, comparación sin U7 y regla del IQR. El cuaderno Jupyter se genera al descargarlo; no se mantiene un archivo Notebook como fuente.
+- **Exportaciones CSV:** pedidos, inventario y movimientos; los importes se exportan en céntimos y se identifican en las cabeceras.
+
+## Datos y roles
+
+Los pedidos y el inventario se guardan en SQLite (`instance/vergara.sqlite3`). El catálogo se inicializa una sola vez; reiniciar el servidor conserva los cambios. El carrito, los favoritos y el seguimiento personal dependen de la sesión del navegador. Los datos que existían en `localStorage` o Firebase en la versión anterior **no se importan automáticamente**.
+
+La selección de roles es de **demostración**, no autenticación de usuarios: cualquier visitante puede elegir Cliente, Ventas, Almacén, Repartidor o Gerencia. Las rutas comprueban las funciones permitidas del rol seleccionado. La integración anterior de Google/Firebase se sustituyó por persistencia local. Antes de usar datos reales, hace falta incorporar autenticación y permisos de usuarios.
+
+Al primer arranque se genera una clave de sesión local en `instance/secret.key`. No se versionan claves ni bases de datos. En un despliegue, puede configurarse `VERGARA_SECRET_KEY` mediante las variables seguras del proveedor.
+
+## Pruebas
+
+```bash
+python -m unittest discover -s tests -v
+python laboratorio/analisis_numpy.py
+```
+
+Las pruebas usan bases temporales: validan pedidos, inventario, persistencia, permisos de los roles, formularios, filtros, exportaciones y laboratorio sin modificar los datos de la aplicación.
+
+## Organización
+
+| Archivo | Responsabilidad |
+| --- | --- |
+| `app.py` | Rutas Flask, formularios, sesiones y descargas |
+| `store.py` | SQLite, transacciones, inventario, pedidos, EOQ y rutas |
+| `ui.py` | Pantallas Bootstrap y diseño rojo y blanco |
+| `tests/test_app.py` | Pruebas funcionales y de persistencia |
+| `laboratorio/analisis_numpy.py` | Análisis reproducible con NumPy |
+| `assets/` | Ilustraciones, logotipos y fuentes con sus licencias |
+
+`requirements.txt` declara las dependencias directas y `requirements.lock` fija todas las versiones verificadas.
+
+## Publicación
+
+GitHub conserva el código. **GitHub Pages no ejecuta aplicaciones Python/Flask**: para publicar la tienda se necesita un servidor con Python y almacenamiento persistente para SQLite. `python app.py` es el servidor de desarrollo; un despliegue público debe usar un servidor WSGI, HTTPS y configuración de producción.

@@ -218,3 +218,7 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Legacy local dependencies and Python app state
+node_modules/
+instance/
