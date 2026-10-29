@@ -33,9 +33,11 @@ export const OperationsCenter: React.FC = () => {
     return (
       <div className="gestion-page" style={{ padding: '40px 20px', minHeight: '100vh', background: 'var(--bg)' }}>
         <section className="card login">
-          <h2>Ingresar al sistema</h2>
+          <div className="login-identity"><span className="brand-icon">V</span><span>VERGARA <small>CENTRO DE OPERACIONES</small></span></div>
+          <div className="eyebrow">UN SOLO EQUIPO. TODO CONECTADO.</div>
+          <h2>Tu operación empieza aquí</h2>
           <p className="muted">
-            Seleccione un rol. Cada rol solo ve las pantallas de su función (control de acceso).
+            Elige tu espacio de trabajo y ten a la mano todo lo que necesitas para avanzar.
           </p>
           {(Object.entries(ROLES_CONFIG) as [RoleId, typeof ROLES_CONFIG[RoleId]][]).map(
             ([roleId, info]) => (

@@ -18,21 +18,21 @@
    Base & Operations Center Variables and Styling
    ========================================================================== */
 :root {
-  --bg: #f6f7fb;
-  --fg: #243047;
+  --bg: #fdf4f5;
+  --fg: #472427;
   --card: #fff;
-  --muted: #7a8495;
-  --line: #edf0f4;
-  --accent: #6653ce;
-  --ok: #239776;
-  --warn: #bb852a;
+  --muted: #96797c;
+  --line: #fae7e9;
+  --accent: #ce535d;
+  --ok: #97232d;
+  --warn: #bb2a36;
 
   /* Storefront colors */
-  --teal: #173f3d;
-  --teal-deep: #123432;
-  --ink: #173c39;
-  --orange: #f5a546;
-  --cream: #fbfaf6;
+  --teal: #391d20;
+  --teal-deep: #2e181a;
+  --ink: #371c1e;
+  --orange: #de5d68;
+  --cream: #fdf4f5;
   --body: #fff;
   --round: 12px;
 }
@@ -130,8 +130,8 @@ svg.icon {
    Storefront Styles
    ========================================================================== */
 .utility-bar {
-  background: #f4f5ef;
-  color: #68766c;
+  background: #faeaeb;
+  color: #7c6264;
   font-size: 11px;
   letter-spacing: 0.15px;
 }
@@ -145,12 +145,12 @@ svg.icon {
 }
 
 .utility-bar a, .utility-bar button {
-  color: #3f5d50;
+  color: #673539;
 }
 
 .utility-divider {
   margin: 0 14px;
-  color: #bdc4b9;
+  color: #c6b7b8;
 }
 
 .shop-header {
@@ -191,7 +191,7 @@ svg.icon {
   display: block;
   font-size: 10px;
   font-weight: 400;
-  color: #b8cfca;
+  color: #cfb8ba;
   margin-bottom: 4px;
 }
 
@@ -209,7 +209,7 @@ svg.icon {
   font-size: 14px;
   margin-left: 8px;
   font-weight: 400;
-  color: #b8cfca;
+  color: #cfb8ba;
 }
 
 .search-form {
@@ -225,15 +225,15 @@ svg.icon {
 
 .search-form:focus-within {
   border-color: var(--orange);
-  box-shadow: 0 0 0 2px #f5a54633;
+  box-shadow: 0 0 0 2px #de5d6833;
 }
 
 .search-form select {
   width: 76px;
   border: 0;
-  border-right: 1px solid #e8e9e4;
+  border-right: 1px solid #f6d7d9;
   color: #7c847d;
-  background: #f8f8f3;
+  background: #fceff0;
   font-size: 11px;
   padding: 0 7px;
 }
@@ -265,7 +265,7 @@ svg.icon {
 }
 
 .search-form button:hover {
-  background: #ffb65c;
+  background: #e37881;
 }
 
 .header-button {
@@ -343,11 +343,11 @@ svg.icon {
   align-items: center;
   gap: 8px;
   padding: 10px 0;
-  color: #637b6b;
+  color: #7c6264;
 }
 
 .category-nav button:hover, .category-nav button.is-active {
-  color: #173f3d;
+  color: #391d20;
   font-weight: 650;
 }
 
@@ -379,7 +379,7 @@ svg.icon {
   align-items: center;
   gap: 7px;
   font-size: 10px;
-  color: #72897d;
+  color: #8d6e71;
   white-space: nowrap;
 }
 
@@ -387,7 +387,7 @@ svg.icon {
   width: 5px;
   height: 5px;
   border-radius: 50%;
-  background: #7ca88b;
+  background: #a87c80;
 }
 
 /* Hero */
@@ -396,7 +396,7 @@ svg.icon {
   display: flex;
   min-height: 428px;
   margin-top: 25px;
-  background: #f3f0e7;
+  background: #f9e1e3;
   border-radius: 14px;
   overflow: hidden;
 }
@@ -413,7 +413,7 @@ svg.icon {
   display: flex;
   align-items: center;
   gap: 8px;
-  color: #7a8774;
+  color: #8d6e71;
   font-size: 9px;
   letter-spacing: 1.65px;
   font-weight: 650;
@@ -424,7 +424,7 @@ svg.icon {
   width: 5px;
   height: 5px;
   border-radius: 50%;
-  background: #de9d50;
+  background: #dc525e;
 }
 
 .hero h1 {
@@ -438,11 +438,11 @@ svg.icon {
 
 .hero h1 em {
   font-style: normal;
-  color: #c58b47;
+  color: #c54752;
 }
 
 .hero-copy > p {
-  color: #75816e;
+  color: #86696c;
   font-size: 13px;
   line-height: 1.9;
 }
@@ -479,7 +479,7 @@ svg.icon {
 }
 
 .button-primary:hover {
-  background: #265b55;
+  background: #552c2f;
 }
 
 .hero-secondary {
@@ -488,7 +488,7 @@ svg.icon {
   font-size: 11px;
   padding: 0;
   white-space: nowrap;
-  color: #61786c;
+  color: #7a5f62;
   display: inline-flex;
   align-items: center;
   gap: 6px;
@@ -500,7 +500,7 @@ svg.icon {
   align-items: center;
   gap: 6px;
   font-size: 10px;
-  color: #7f8b75;
+  color: #8f7173;
   margin-top: 28px;
 }
 
@@ -521,7 +521,7 @@ svg.icon {
   width: 350px;
   height: 350px;
   border-radius: 50%;
-  background: #e9dfc9;
+  background: #e9c9cc;
   top: 37px;
   left: 36px;
 }
@@ -531,7 +531,7 @@ svg.icon {
   width: 410px;
   height: 410px;
   border-radius: 50%;
-  border: 1px dashed #c2c9ad;
+  border: 1px dashed #c9adaf;
   top: 12px;
   left: 7px;
   opacity: 0.55;
@@ -541,8 +541,8 @@ svg.icon {
   position: absolute;
   bottom: 49px;
   border-radius: 6px;
-  background: linear-gradient(125deg, #e1dfd2, #c8ccba);
-  box-shadow: 10px 14px 16px #293f2512;
+  background: linear-gradient(125deg, #e1d2d3, #ccbabc);
+  box-shadow: 10px 14px 16px #42222512;
 }
 
 .back-plinth {
@@ -557,14 +557,14 @@ svg.icon {
   height: 64px;
   left: 15px;
   bottom: 36px;
-  background: linear-gradient(100deg, #d9d6c7, #e9e7db);
-  border-top: 3px solid #f3efe5;
+  background: linear-gradient(100deg, #d9c7c9, #e9dbdc);
+  border-top: 3px solid #f8e0e2;
 }
 
 .hero-pack {
   position: absolute;
   object-fit: contain;
-  filter: drop-shadow(8px 9px 6px #434b3120);
+  filter: drop-shadow(8px 9px 6px #522a2d20);
 }
 
 .hero-rice {
@@ -611,17 +611,17 @@ svg.icon {
   top: 45px;
   left: -32px;
   border-radius: 7px;
-  background: #fffdf7ef;
-  box-shadow: 0 8px 20px #37443108;
+  background: #fef8f9ef;
+  box-shadow: 0 8px 20px #4d282b08;
   padding: 11px 15px;
   z-index: 6;
   transform: rotate(-5deg);
   font-size: 9px;
-  color: #8c9988;
+  color: #9e8385;
 }
 
 .hero-sticker > .icon {
-  color: #6f8a70;
+  color: #8b6e70;
   width: 24px;
   height: 24px;
 }
@@ -629,14 +629,14 @@ svg.icon {
 .hero-sticker b {
   display: block;
   font-size: 10px;
-  color: #45614a;
+  color: #6e383d;
   margin-top: 3px;
   font-weight: 600;
 }
 
 .scene-spark {
   position: absolute;
-  color: #a3ac8c;
+  color: #ac8c8f;
   z-index: 5;
 }
 
@@ -656,7 +656,7 @@ svg.icon {
   right: 39px;
   font-size: 6px;
   letter-spacing: 1.4px;
-  color: #a1a58f;
+  color: #a68e90;
 }
 
 /* Benefits */
@@ -673,7 +673,7 @@ svg.icon {
   align-items: center;
   gap: 12px;
   justify-content: center;
-  border-right: 1px solid #e6e9e0;
+  border-right: 1px solid #e9e0e1;
 }
 
 .benefits > div:first-child {
@@ -688,7 +688,7 @@ svg.icon {
 .benefit-icon.icon {
   width: 28px;
   height: 28px;
-  color: #547d6e;
+  color: #7d5457;
   stroke-width: 1.2;
 }
 
@@ -701,7 +701,7 @@ svg.icon {
 .benefits small {
   display: block;
   font-size: 10px;
-  color: #7a8873;
+  color: #8d6e71;
   margin-top: 5px;
 }
 
@@ -719,7 +719,7 @@ svg.icon {
 }
 
 .section-heading .eyebrow {
-  color: #78866e;
+  color: #896b6e;
   font-size: 8px;
   letter-spacing: 1.2px;
   margin-bottom: 10px;
@@ -739,7 +739,7 @@ svg.icon {
   display: flex;
   align-items: center;
   gap: 12px;
-  color: #778d7c;
+  color: #917376;
 }
 
 .text-link > .icon {
@@ -758,7 +758,7 @@ svg.icon {
   min-height: 161px;
   overflow: hidden;
   border-radius: 9px;
-  background: #f5f2e9;
+  background: #f9e5e6;
   border: 0;
   display: block;
   text-align: left;
@@ -778,7 +778,7 @@ svg.icon {
 .category-tile small {
   font-size: 7px;
   letter-spacing: 1.1px;
-  color: #7f8d72;
+  color: #8f7073;
 }
 
 .category-tile h3 {
@@ -791,7 +791,7 @@ svg.icon {
 
 .category-tile div > span {
   font-size: 10px;
-  color: #75836c;
+  color: #86696c;
   display: flex;
   align-items: center;
   gap: 10px;
@@ -810,7 +810,7 @@ svg.icon {
   bottom: -6px;
   transform: rotate(11deg);
   transition: transform 0.3s;
-  filter: drop-shadow(5px 5px 5px #3333170c);
+  filter: drop-shadow(5px 5px 5px #31191b0c);
 }
 
 .category-tile > img:nth-of-type(2) {
@@ -823,20 +823,20 @@ svg.icon {
 }
 
 .tile-breakfast {
-  background: #edf0e8;
+  background: #f8e0e2;
 }
 
 .tile-breakfast h3 {
-  color: #536c50;
+  color: #6c5052;
 }
 
 .tile-cleaning {
-  background: #edf1f2;
+  background: #fae5e7;
 }
 
 .tile-cleaning h3 {
   font-size: 21px;
-  color: #526e77;
+  color: #775255;
 }
 
 .tile-cleaning > img {
@@ -863,7 +863,7 @@ svg.icon {
 .catalog-heading p {
   font-size: 12px;
   margin-top: 10px;
-  color: #7c8975;
+  color: #8e7072;
 }
 
 .sort-label {
@@ -872,7 +872,7 @@ svg.icon {
   gap: 10px;
   white-space: nowrap;
   font-size: 10px;
-  color: #7c8975;
+  color: #8e7072;
 }
 
 .sort-label select {
@@ -880,7 +880,7 @@ svg.icon {
   border-radius: 5px;
   padding: 9px 26px 9px 10px;
   background: #fff;
-  color: #637b6b;
+  color: #7c6264;
   font-size: 11px;
 }
 
@@ -904,7 +904,7 @@ svg.icon {
   padding: 8px 17px;
   font-size: 11px;
   background: white;
-  color: #74856c;
+  color: #876a6c;
 }
 
 .filter-tabs button.selected {
@@ -914,12 +914,12 @@ svg.icon {
 }
 
 .filter-tabs button:hover {
-  border-color: #91a08f;
+  border-color: #a48b8d;
 }
 
 .catalog-toolbar > span {
   font-size: 11px;
-  color: #7c8975;
+  color: #8e7072;
 }
 
 .active-query {
@@ -927,14 +927,14 @@ svg.icon {
   align-items: center;
   gap: 12px;
   font-size: 11px;
-  color: #7e927c;
+  color: #95797b;
   margin-bottom: 20px;
 }
 
 .active-query button {
-  background: #f2f4e9;
+  background: #f9e4e6;
   border: 0;
-  color: #668361;
+  color: #836164;
   border-radius: 4px;
   font-size: 10px;
   padding: 5px 9px;
@@ -947,7 +947,7 @@ svg.icon {
 }
 
 .product-card {
-  border: 1px solid #e7eae2;
+  border: 1px solid #f6d6d8;
   border-radius: 10px;
   overflow: hidden;
   transition: box-shadow 0.25s, transform 0.25s;
@@ -957,13 +957,13 @@ svg.icon {
 }
 
 .product-card:hover {
-  box-shadow: 0 9px 28px #243d2710;
+  box-shadow: 0 9px 28px #40212410;
   transform: translateY(-3px);
 }
 
 .product-visual {
   position: relative;
-  background: #f7f7f1;
+  background: #fbedee;
   margin: 7px 7px 0;
   border-radius: 7px;
   height: 220px;
@@ -986,8 +986,8 @@ svg.icon {
   position: absolute;
   top: 12px;
   left: 12px;
-  background: #e8eddf;
-  color: #71805f;
+  background: #f6d6d8;
+  color: #805f62;
   font-size: 7px;
   font-weight: 600;
   letter-spacing: 0.7px;
@@ -1000,14 +1000,14 @@ svg.icon {
   position: absolute;
   right: 9px;
   top: 9px;
-  border: 1px solid #eef0e8;
+  border: 1px solid #f8e0e2;
   background: #ffffffd9;
   border-radius: 50%;
   width: 27px;
   height: 27px;
   display: grid;
   place-items: center;
-  color: #9caa98;
+  color: #ac9698;
   padding: 0;
 }
 
@@ -1017,12 +1017,12 @@ svg.icon {
 }
 
 .favorite-button[aria-pressed="true"] {
-  color: #ba6b55;
-  background: #f9eae4;
+  color: #ba555d;
+  background: #f9e4e6;
 }
 
 .favorite-button[aria-pressed="true"] > .icon {
-  fill: #f0c9b9;
+  fill: #f0b9be;
 }
 
 .product-info {
@@ -1034,7 +1034,7 @@ svg.icon {
 
 .product-brand {
   font-size: 7px;
-  color: #7f8a75;
+  color: #8f7073;
   letter-spacing: 1.2px;
   margin-bottom: 8px;
 }
@@ -1042,18 +1042,18 @@ svg.icon {
 .product-info h3 {
   font-size: 15px;
   font-weight: 600;
-  color: #345748;
+  color: #5c2f33;
   margin-bottom: 6px;
 }
 
 .product-format {
   font-size: 11px;
-  color: #7c8972;
+  color: #8d6e71;
 }
 
 .product-stock {
   font-size: 10px;
-  color: #658360;
+  color: #836063;
   margin-top: 12px;
   display: flex;
   align-items: center;
@@ -1066,23 +1066,23 @@ svg.icon {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #91b495;
+  background: #b49194;
 }
 
 .product-stock.low {
-  color: #9c7d3e;
+  color: #9c3e46;
 }
 
 .product-stock.low:before {
-  background: #d2ab6c;
+  background: #d26c75;
 }
 
 .product-stock.out {
-  color: #b77b6e;
+  color: #b76e74;
 }
 
 .product-stock.out:before {
-  background: #b77b6e;
+  background: #b76e74;
 }
 
 .product-bottom {
@@ -1092,7 +1092,7 @@ svg.icon {
   gap: 10px;
   margin-top: 17px;
   padding-top: 12px;
-  border-top: 1px solid #f0f1e9;
+  border-top: 1px solid #f9e1e3;
 }
 
 .product-price {
@@ -1122,8 +1122,8 @@ svg.icon {
 
 .add-button {
   border: 0;
-  background: #eef2e9;
-  color: #527459;
+  background: #f9e2e4;
+  color: #745255;
   display: flex;
   align-items: center;
   gap: 6px;
@@ -1166,15 +1166,15 @@ svg.icon {
 .banner-monogram {
   width: 65px;
   height: 65px;
-  background: #254d47;
-  border: 1px solid #54746355;
+  background: #4b272a;
+  border: 1px solid #74545755;
   flex-shrink: 0;
   border-radius: 50%;
   display: grid;
   place-items: center;
   font-family: 'Manrope', Arial, sans-serif;
   font-size: 40px;
-  color: #d5dfb9;
+  color: #dfb9bc;
   font-weight: 800;
   position: relative;
 }
@@ -1183,13 +1183,13 @@ svg.icon {
   position: absolute;
   right: -3px;
   top: 8px;
-  color: #f2b25f;
+  color: #e26f79;
   font-size: 26px;
   line-height: 1;
 }
 
 .business-banner .eyebrow {
-  color: #93ab90;
+  color: #ab9092;
   font-size: 7px;
   letter-spacing: 1.25px;
   margin-bottom: 10px;
@@ -1204,13 +1204,13 @@ svg.icon {
 
 .business-banner p {
   font-size: 11px;
-  color: #b3c4b6;
+  color: #c4b3b4;
   margin-top: 9px;
 }
 
 .button-light {
-  background: #f0ead5;
-  color: #3e5b45;
+  background: #f0d5d7;
+  color: #653438;
   margin-left: auto;
   white-space: nowrap;
   font-size: 11px;
@@ -1219,7 +1219,7 @@ svg.icon {
 }
 
 .button-light:hover {
-  background: #fff4d0;
+  background: #f7d8db;
 }
 
 /* How Section */
@@ -1230,7 +1230,7 @@ svg.icon {
 
 .how-caption {
   font-size: 11px;
-  color: #7d8a73;
+  color: #8e6f72;
 }
 
 .how-grid {
@@ -1251,8 +1251,8 @@ svg.icon {
   width: 35px;
   height: 35px;
   flex-shrink: 0;
-  background: #f3f4ed;
-  color: #899c81;
+  background: #fae7e9;
+  color: #9c8183;
   border-radius: 50%;
   font-size: 12px;
 }
@@ -1264,7 +1264,7 @@ svg.icon {
 }
 
 .how-grid p {
-  color: #7d8a73;
+  color: #8e6f72;
   font-size: 12px;
   line-height: 1.9;
   max-width: 250px;
@@ -1273,7 +1273,7 @@ svg.icon {
 /* Shop Footer */
 .shop-footer {
   background: var(--teal-deep);
-  color: #c6d2c3;
+  color: #d2c3c4;
 }
 
 .footer-main {
@@ -1291,21 +1291,21 @@ svg.icon {
 
 .footer-brand > p {
   font-size: 12px;
-  color: #a0b6a8;
+  color: #b6a0a2;
   line-height: 1.7;
   margin: 16px 0 12px;
 }
 
 .footer-brand > span {
   font-size: 9px;
-  color: #91a99b;
+  color: #a99193;
 }
 
 .footer-main h3 {
   font-size: 12px;
   font-weight: 600;
   margin: 6px 0 19px;
-  color: #d8e0d1;
+  color: #e0d1d2;
 }
 
 .footer-main a, .footer-main button {
@@ -1314,24 +1314,24 @@ svg.icon {
   margin-bottom: 12px;
   background: none;
   border: 0;
-  color: #a0b6a6;
+  color: #b6a0a2;
   padding: 0;
   text-align: left;
 }
 
 .footer-main a:hover, .footer-main button:hover {
-  color: #f4be70;
+  color: #e57f88;
 }
 
 .footer-bottom {
   padding-top: 19px;
   padding-bottom: 19px;
-  border-top: 1px solid #37524a;
+  border-top: 1px solid #5a2f32;
   display: flex;
   justify-content: space-between;
   gap: 20px;
   font-size: 9px;
-  color: #8aa48f;
+  color: #a48a8c;
 }
 
 /* Floating button */
@@ -1343,16 +1343,16 @@ svg.icon {
   height: 46px;
   border-radius: 50%;
   border: 0;
-  background: #edac59;
-  color: #254c3e;
+  background: #e06670;
+  color: #4b2629;
   display: grid;
   place-items: center;
   z-index: 10;
-  box-shadow: 0 4px 18px #2f42282a;
+  box-shadow: 0 4px 18px #4624272a;
 }
 
 .help-float:hover {
-  background: #f6bd74;
+  background: #e6848c;
 }
 
 .help-float > .icon {
@@ -1364,7 +1364,7 @@ svg.icon {
 .drawer-overlay {
   position: fixed;
   inset: 0;
-  background: #0d272570;
+  background: #22121370;
   backdrop-filter: blur(3px);
   z-index: 100;
   display: flex;
@@ -1374,14 +1374,14 @@ svg.icon {
 
 .modal-container {
   background: #fff;
-  border: 1px solid #e6eadf;
+  border: 1px solid #eadfe0;
   border-radius: 15px;
   max-width: calc(100% - 32px);
   width: 510px;
   max-height: 88dvh;
   padding: 25px 27px;
   color: var(--ink);
-  box-shadow: 0 16px 80px #153c3430;
+  box-shadow: 0 16px 80px #351c1e30;
   overflow-y: auto;
   position: relative;
 }
@@ -1398,7 +1398,7 @@ svg.icon {
   border-radius: 15px 0 0 15px;
   padding: 25px 25px 32px;
   overflow-y: auto;
-  box-shadow: 0 16px 80px #153c3430;
+  box-shadow: 0 16px 80px #351c1e30;
 }
 
 .dialog-header {
@@ -1432,7 +1432,7 @@ svg.icon {
 }
 
 .dialog-intro {
-  color: #7e9281;
+  color: #967a7c;
   line-height: 1.8;
   font-size: 12px;
   margin-bottom: 20px;
@@ -1447,7 +1447,7 @@ svg.icon {
 .form-select {
   display: block;
   width: 100%;
-  border: 1px solid #dce3d8;
+  border: 1px solid #e3d8d9;
   border-radius: 5px;
   background: white;
   padding: 12px;
@@ -1463,7 +1463,7 @@ svg.icon {
 
 .fine-print {
   font-size: 11px;
-  color: #76896d;
+  color: #8a6c6f;
   line-height: 1.8;
   margin-top: 15px;
 }
@@ -1480,7 +1480,7 @@ svg.icon {
   width: 65px;
   height: 78px;
   object-fit: contain;
-  background: #f6f7ef;
+  background: #fbebed;
   border-radius: 7px;
 }
 
@@ -1496,7 +1496,7 @@ svg.icon {
 
 .cart-item-info > p {
   font-size: 11px;
-  color: #82947c;
+  color: #967a7c;
 }
 
 .quantity-controls {
@@ -1525,7 +1525,7 @@ svg.icon {
   width: auto;
   border: 0;
   background: none;
-  color: #a6ad9c;
+  color: #af9a9b;
   font-size: 9px;
   margin-left: 4px;
   cursor: pointer;
@@ -1547,7 +1547,7 @@ svg.icon {
   gap: 15px;
   margin-bottom: 14px;
   font-size: 12px;
-  color: #86947d;
+  color: #977a7d;
 }
 
 .summary-total {
@@ -1559,11 +1559,11 @@ svg.icon {
 }
 
 .demo-checkout-note {
-  background: #f8f4e7;
+  background: #fae5e7;
   border-radius: 6px;
   padding: 12px;
   font-size: 10px;
-  color: #a08f66;
+  color: #a0666b;
   margin-top: 18px;
   line-height: 1.8;
 }
@@ -1572,14 +1572,14 @@ svg.icon {
   padding: 45px 12px;
   text-align: center;
   grid-column: 1 / -1;
-  background: #f9faf5;
+  background: #fcf3f3;
   border-radius: 10px;
 }
 
 .empty-state > .icon {
   width: 36px;
   height: 36px;
-  color: #acb79b;
+  color: #b79b9d;
   margin-bottom: 14px;
 }
 
@@ -1590,7 +1590,7 @@ svg.icon {
 
 .empty-state p {
   font-size: 12px;
-  color: #91a087;
+  color: #a08789;
   line-height: 1.8;
 }
 
@@ -1619,28 +1619,28 @@ svg.icon {
 
 .order-card p {
   font-size: 11px;
-  color: #8c9b86;
+  color: #9e8385;
   line-height: 1.8;
 }
 
 .order-status {
-  background: #f3eedf;
-  color: #ae8f4e;
+  background: #f7dbdd;
+  color: #ae4e56;
   font-size: 9px;
   border-radius: 4px;
   padding: 4px 8px;
 }
 
 .order-status.complete {
-  background: #e9f0e0;
-  color: #7c9266;
+  background: #f7d9dc;
+  color: #92666a;
 }
 
 .order-steps {
   display: flex;
   justify-content: space-between;
   font-size: 8px;
-  color: #bbc2b0;
+  color: #c2b0b2;
   padding-top: 15px;
   border-top: 1px solid var(--line);
   margin-top: 12px;
@@ -1648,7 +1648,7 @@ svg.icon {
 }
 
 .order-steps .done {
-  color: #628560;
+  color: #856063;
 }
 
 .order-steps .icon {
@@ -1657,14 +1657,14 @@ svg.icon {
 }
 
 .confirmation-mark {
-  background: #edf3e5;
+  background: #f8e0e2;
   border-radius: 50%;
   width: 64px;
   height: 64px;
   display: grid;
   place-items: center;
   margin: 10px auto 20px;
-  color: #7e9b63;
+  color: #9b6368;
   font-size: 32px;
 }
 
@@ -1679,7 +1679,7 @@ svg.icon {
 
 .confirmation p {
   font-size: 12px;
-  color: #7f917b;
+  color: #95777a;
   line-height: 1.9;
 }
 
@@ -1688,12 +1688,12 @@ svg.icon {
   gap: 15px;
   margin: 23px 0;
   font-size: 12px;
-  color: #879781;
+  color: #9a7e81;
   line-height: 1.9;
 }
 
 .modal-feature > .icon {
-  color: #b29e6a;
+  color: #b26a70;
   margin-top: 3px;
   flex-shrink: 0;
 }
@@ -1711,7 +1711,7 @@ svg.icon {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  background: #f7f8f1;
+  background: #fbeeef;
   padding: 15px;
   border-radius: 8px;
   margin-bottom: 15px;
@@ -1720,8 +1720,8 @@ svg.icon {
 .chat-bubble {
   padding: 10px 13px;
   border-radius: 10px;
-  background: #e9efdf;
-  color: #657e59;
+  background: #f7d7da;
+  color: #7e595c;
   font-size: 12px;
   line-height: 1.7;
   max-width: 90%;
@@ -1768,7 +1768,7 @@ svg.icon {
   border: 1px solid var(--line);
   background: white;
   font-size: 10px;
-  color: #809275;
+  color: #927577;
   border-radius: 15px;
   padding: 6px 11px;
 }
@@ -1781,13 +1781,13 @@ svg.icon {
   background: var(--teal);
   color: #fff;
   padding: 13px 23px;
-  border: 1px solid #5e7d68;
+  border: 1px solid #7d5e61;
   border-radius: 8px;
   max-width: calc(100% - 150px);
   font-size: 12px;
   pointer-events: none;
   z-index: 200;
-  box-shadow: 0 5px 20px #143e3d1a;
+  box-shadow: 0 5px 20px #361c1e1a;
   animation: fadeIn 0.2s ease-out;
 }
 
@@ -1827,7 +1827,7 @@ svg.icon {
   display: flex;
   align-items: center;
   gap: 11px;
-  color: #293048;
+  color: #4b2629;
   font-size: 30px;
   font-weight: 800;
   letter-spacing: -1.2px;
@@ -1840,7 +1840,7 @@ svg.icon {
   letter-spacing: 1.6px;
   font-weight: 600;
   margin-top: 7px;
-  color: #9197a6;
+  color: #a79092;
 }
 
 .brand-icon {
@@ -1858,7 +1858,7 @@ svg.icon {
 .workspace-label {
   font-size: 9px;
   letter-spacing: 1.7px;
-  color: #9aa2b0;
+  color: #b09a9c;
   margin: 45px 14px 13px;
   font-weight: 700;
 }
@@ -1876,7 +1876,7 @@ svg.icon {
   text-align: left;
   border: 0;
   background: transparent;
-  color: #7c8495;
+  color: #977a7d;
   padding: 12px 14px;
   border-radius: 7px;
   font-size: 12px;
@@ -1885,13 +1885,13 @@ svg.icon {
 }
 
 .menu button.activo {
-  background: #eeeafa;
+  background: #faeaeb;
   color: var(--accent);
   font-weight: 650;
 }
 
 .menu button:hover {
-  background: #f6f4fc;
+  background: #fdf3f4;
 }
 
 .nav-icon {
@@ -1905,7 +1905,7 @@ svg.icon {
   font-size: 7px;
   border-radius: 4px;
   color: var(--accent);
-  background: #eeeafa;
+  background: #faeaeb;
   padding: 2px 4px;
   margin-left: auto;
 }
@@ -1915,20 +1915,20 @@ svg.icon {
   font-size: 10px;
   padding: 20px 10px 0;
   border-top: 1px solid var(--line);
-  color: #7a8495;
+  color: #96797c;
 }
 
 .sidebar-bottom p {
   font-size: 10px;
   margin-top: 10px;
-  color: #a0a7b3;
+  color: #b49fa1;
 }
 
 .online-dot, .live-label i {
   width: 6px;
   height: 6px;
   display: inline-block;
-  background: #52bb99;
+  background: #bb525b;
   border-radius: 50%;
   margin-right: 5px;
 }
@@ -1950,17 +1950,17 @@ svg.icon {
 
 .breadcrumb {
   font-size: 11px;
-  color: #9ca3af;
+  color: #b09b9d;
 }
 
 .breadcrumb span {
   margin: 0 12px;
-  color: #cbd0d8;
+  color: #d8cbcc;
 }
 
 .breadcrumb b {
   font-weight: 500;
-  color: #606b7d;
+  color: #7d6062;
 }
 
 .sesion {
@@ -1973,13 +1973,13 @@ svg.icon {
 .sesion small {
   display: block;
   font-size: 9px;
-  color: #9aa2b0;
+  color: #b09a9c;
 }
 
 .avatar {
   display: grid;
   place-items: center;
-  background: #f0ecfb;
+  background: #fbeced;
   color: var(--accent);
   width: 34px;
   height: 34px;
@@ -2004,7 +2004,7 @@ svg.icon {
 .eyebrow {
   font-size: 9px;
   letter-spacing: 1.7px;
-  color: #9aa2b0;
+  color: #b09a9c;
   margin-bottom: 4px;
   font-weight: 600;
 }
@@ -2022,11 +2022,11 @@ svg.icon {
 
 .card {
   background: var(--card);
-  border: 1px solid #e9edf3;
+  border: 1px solid #f9e3e5;
   border-radius: 12px;
   padding: 23px;
   margin-bottom: 22px;
-  box-shadow: 0 2px 3px #24304702;
+  box-shadow: 0 2px 3px #47242702;
 }
 
 .card h2 {
@@ -2041,7 +2041,7 @@ svg.icon {
   align-items: center;
   gap: 10px;
   padding: 14px 0;
-  border-bottom: 1px solid #eef0f4;
+  border-bottom: 1px solid #fae8e9;
   font-size: 12px;
   flex-wrap: wrap;
 }
@@ -2073,8 +2073,8 @@ svg.icon {
 
 .btn.secundario {
   background: white;
-  color: #626d80;
-  border: 1px solid #e1e5ed;
+  color: #806265;
+  border: 1px solid #f7d7da;
 }
 
 .btn.pequeno {
@@ -2109,11 +2109,11 @@ svg.icon {
 }
 
 .alerta {
-  border-color: #efdfc4;
-  background: #fffbf3;
+  border-color: #efc4c8;
+  background: #fdf5f6;
   font-size: 12px;
-  color: #9e804f;
-  border: 1px solid #efdfc4;
+  color: #9e4f56;
+  border: 1px solid #efc4c8;
   border-radius: 8px;
   padding: 12px;
   margin-bottom: 14px;
@@ -2166,15 +2166,15 @@ svg.icon {
 }
 
 .burbuja.bot {
-  background: #eaf6f0;
+  background: #fae6e8;
   align-self: flex-start;
-  color: #239776;
+  color: #97232d;
 }
 
 .burbuja.yo {
-  background: #eeeafa;
+  background: #faeaeb;
   align-self: flex-end;
-  color: #6653ce;
+  color: #ce535d;
 }
 
 .mapa {
@@ -2190,8 +2190,8 @@ svg.icon {
   overflow: hidden;
   display: flex;
   justify-content: space-between;
-  background: #eeebfa;
-  border: 1px solid #e4dff7;
+  background: #fbeaec;
+  border: 1px solid #f8dee0;
   border-radius: 13px;
   padding: 27px 30px;
   margin-bottom: 23px;
@@ -2201,13 +2201,13 @@ svg.icon {
 .welcome-banner h2 {
   font-size: 25px;
   letter-spacing: -0.7px;
-  color: #383157;
+  color: #5a2e32;
   margin: 9px 0 5px;
 }
 
 .welcome-banner p {
   font-size: 11px;
-  color: #8b81a6;
+  color: #a68184;
   max-width: 370px;
 }
 
@@ -2217,7 +2217,7 @@ svg.icon {
   padding: 0;
   margin-top: 10px;
   font-size: 11px;
-  color: #6c55bd;
+  color: #bd555e;
   font-weight: 600;
   cursor: pointer;
 }
@@ -2234,7 +2234,7 @@ svg.icon {
 
 .orbit {
   position: absolute;
-  border: 1px solid #d9d0f3;
+  border: 1px solid #f3d0d3;
   border-radius: 50%;
   width: 155px;
   height: 155px;
@@ -2246,7 +2246,7 @@ svg.icon {
   content: '';
   position: absolute;
   inset: 17px;
-  border: 1px dashed #d7cdef;
+  border: 1px dashed #efcdd0;
   border-radius: 50%;
 }
 
@@ -2256,7 +2256,7 @@ svg.icon {
   place-items: center;
   transform: rotate(-11deg);
   border-radius: 16px;
-  box-shadow: 9px 12px 18px #7962ae20;
+  box-shadow: 9px 12px 18px #ae626820;
 }
 
 .box-one {
@@ -2264,7 +2264,7 @@ svg.icon {
   height: 88px;
   top: 32px;
   left: 20px;
-  background: #c6b8e9;
+  background: #e9b8bc;
   color: #fff;
   font-size: 52px;
 }
@@ -2274,8 +2274,8 @@ svg.icon {
   height: 75px;
   top: 7px;
   left: 108px;
-  background: linear-gradient(135deg, #9b86dc, #6b51c4);
-  color: #eee8fc;
+  background: linear-gradient(135deg, #dc868d, #c4515b);
+  color: #faeaeb;
   font-size: 40px;
   font-weight: 800;
   transform: rotate(12deg);
@@ -2286,11 +2286,11 @@ svg.icon {
   top: 108px;
   left: 66px;
   background: #fff;
-  color: #7c6c9f;
+  color: #9f6c70;
   border-radius: 6px;
   padding: 7px 12px;
   font-size: 8px;
-  box-shadow: 0 5px 10px #7e65a515;
+  box-shadow: 0 5px 10px #a5656a15;
   white-space: nowrap;
 }
 
@@ -2299,7 +2299,7 @@ svg.icon {
   right: 6px;
   top: 60px;
   font-size: 30px;
-  color: #aa96dc;
+  color: #dc969c;
 }
 
 .dashboard-kpis {
@@ -2315,7 +2315,7 @@ svg.icon {
 }
 
 .metric-top {
-  color: #7c8597;
+  color: #987b7e;
   font-size: 10px;
   display: flex;
   align-items: center;
@@ -2325,8 +2325,8 @@ svg.icon {
 }
 
 .metric-icon {
-  background: #f0edfc;
-  color: #8e7bd4;
+  background: #fbeeef;
+  color: #d47b82;
   border-radius: 7px;
   display: grid;
   place-items: center;
@@ -2336,8 +2336,8 @@ svg.icon {
 }
 
 .metric-icon.warning {
-  background: #fff4e6;
-  color: #d49e4f;
+  background: #fbeaec;
+  color: #d44f5a;
 }
 
 .metric strong {
@@ -2352,7 +2352,7 @@ svg.icon {
 
 .metric small {
   font-size: 9px;
-  color: #9aa2b0;
+  color: #b09a9c;
 }
 
 .section-title {
@@ -2382,23 +2382,23 @@ svg.icon {
 }
 
 .purple {
-  color: #8c77c3;
-  background: #f2eefb;
+  color: #c3777d;
+  background: #fbeeef;
 }
 
 .amber {
-  color: #c39852;
-  background: #fff5e5;
+  color: #c3525b;
+  background: #faeaeb;
 }
 
 .green {
-  color: #4c9f83;
-  background: #eaf6f0;
+  color: #9f4c53;
+  background: #fae6e8;
 }
 
 .legend {
   font-size: 9px;
-  color: #9aa2af;
+  color: #af9a9b;
   display: flex;
   align-items: center;
   gap: 6px;
@@ -2408,7 +2408,7 @@ svg.icon {
   height: 7px;
   width: 7px;
   border-radius: 2px;
-  background: #a08cd9;
+  background: #d98c92;
 }
 
 .bar-chart {
@@ -2424,7 +2424,7 @@ svg.icon {
   flex-direction: column;
   justify-content: space-between;
   font-size: 8px;
-  color: #a5acb8;
+  color: #b8a5a6;
   padding-bottom: 30px;
 }
 
@@ -2434,7 +2434,7 @@ svg.icon {
   align-items: flex-end;
   justify-content: space-around;
   gap: 10px;
-  background: repeating-linear-gradient(to top, transparent 0, transparent 42px, #eff1f5 43px, #eff1f5 44px);
+  background: repeating-linear-gradient(to top, transparent 0, transparent 42px, #faeaeb 43px, #faeaeb 44px);
   padding-top: 20px;
   min-width: 0;
 }
@@ -2451,13 +2451,13 @@ svg.icon {
 
 .chart-column > b {
   font-size: 9px;
-  color: #9a8bb9;
+  color: #b98b8f;
   margin-bottom: 5px;
   font-weight: 500;
 }
 
 .chart-bar {
-  background: #ac9bdf;
+  background: #df9ba1;
   width: 58%;
   min-width: 8px;
   max-width: 48px;
@@ -2465,16 +2465,16 @@ svg.icon {
 }
 
 .bar-1, .bar-3 {
-  background: #c9bceb;
+  background: #ebbcc0;
 }
 
 .bar-2 {
-  background: #8f79cf;
+  background: #cf7980;
 }
 
 .chart-column > span {
   font-size: 9px;
-  color: #9ba2ae;
+  color: #af9a9b;
   margin-top: 12px;
   background: white;
   width: 100%;
@@ -2486,15 +2486,15 @@ svg.icon {
 
 .chart-foot {
   font-size: 9px;
-  color: #9fa7b5;
+  color: #b59fa1;
   margin-top: 15px;
   border-top: 1px solid var(--line);
   padding-top: 12px;
 }
 
 .count {
-  background: #fff4e3;
-  color: #bf934c;
+  background: #fae8e9;
+  color: #bf4c56;
   font-size: 10px;
   padding: 1px 7px;
   border-radius: 5px;
@@ -2510,8 +2510,8 @@ svg.icon {
 .alert-symbol {
   display: grid;
   place-items: center;
-  background: #fff5e6;
-  color: #cb9946;
+  background: #fbeaec;
+  color: #cb4651;
   border-radius: 8px;
   min-width: 32px;
   height: 35px;
@@ -2524,13 +2524,13 @@ svg.icon {
 
 .alert-item p {
   font-size: 10px;
-  color: #8a94a4;
+  color: #a48a8c;
   margin: 2px 0;
 }
 
 .alert-item small {
   font-size: 9px;
-  color: #acb2be;
+  color: #beacae;
 }
 
 .alert-item .badge {
@@ -2539,8 +2539,8 @@ svg.icon {
 }
 
 .tip {
-  background: #f7f8fc;
-  border: 1px solid #eff1f6;
+  background: #fdf6f7;
+  border: 1px solid #fbeaec;
   border-radius: 8px;
   padding: 14px 15px;
   margin-top: 18px;
@@ -2548,12 +2548,12 @@ svg.icon {
 
 .tip b {
   font-size: 10px;
-  color: #788099;
+  color: #99787b;
 }
 
 .tip p {
   font-size: 10px;
-  color: #a0a7b6;
+  color: #b6a0a2;
   margin: 4px 0 0;
 }
 
@@ -2563,7 +2563,7 @@ svg.icon {
   gap: 15px;
   align-items: center;
   padding: 13px 0;
-  border-bottom: 1px solid #f0f2f6;
+  border-bottom: 1px solid #fbebed;
   font-size: 11px;
 }
 
@@ -2572,8 +2572,8 @@ svg.icon {
 }
 
 .product-symbol {
-  background: #f8f0e3;
-  color: #c1a774;
+  background: #f9e2e4;
+  color: #c1747a;
   border-radius: 7px;
   display: grid;
   place-items: center;
@@ -2582,29 +2582,29 @@ svg.icon {
 }
 
 .p1 {
-  background: #f5f2df;
-  color: #c8b865;
+  background: #f8dcdf;
+  color: #c8656d;
 }
 
 .p2 {
-  background: #f0f2f4;
-  color: #a9b0bb;
+  background: #faeaeb;
+  color: #bba9aa;
 }
 
 .p3 {
-  background: #f9eae5;
-  color: #d6a18d;
+  background: #f9e5e6;
+  color: #d68d93;
 }
 
 .p4 {
-  background: #eaf1f8;
-  color: #8faeca;
+  background: #fae8e9;
+  color: #ca8f94;
 }
 
 .product-name small {
   display: block;
   font-size: 8px;
-  color: #adb4c0;
+  color: #c0adaf;
 }
 
 .product-name b {
@@ -2618,12 +2618,12 @@ svg.icon {
 .product-row > b small {
   font-size: 9px;
   font-weight: 400;
-  color: #b1b6c0;
+  color: #c1b0b1;
 }
 
 .stock-track {
   height: 5px;
-  background: #f2effa;
+  background: #fbeeef;
   border-radius: 5px;
   max-width: 150px;
 }
@@ -2631,12 +2631,12 @@ svg.icon {
 .stock-track span {
   display: block;
   height: 100%;
-  background: #af9bdd;
+  background: #dd9ba1;
   border-radius: 5px;
 }
 
 .stock-track .orange {
-  background: #e4ba7c;
+  background: #e47c85;
 }
 
 .inventory-head {
@@ -2644,7 +2644,7 @@ svg.icon {
   grid-template-columns: 1.4fr 1fr 0.7fr 0.7fr;
   font-size: 8px;
   letter-spacing: 0.8px;
-  color: #a9b0bb;
+  color: #bba9aa;
   border-bottom: 1px solid var(--line);
   padding-bottom: 10px;
 }
@@ -2652,7 +2652,7 @@ svg.icon {
 .text-button {
   border: none;
   background: none;
-  color: #8b78c0;
+  color: #c0787e;
   font-size: 10px;
   padding: 0;
   cursor: pointer;
@@ -2660,7 +2660,7 @@ svg.icon {
 
 .demo-note {
   font-size: 10px;
-  color: #9ba3b2;
+  color: #b29b9d;
 }
 
 .demo-note button {
@@ -2692,9 +2692,9 @@ footer {
   display: flex;
   align-items: center;
   gap: 16px;
-  color: #a9afbb;
+  color: #bba9aa;
   font-size: 10px;
-  border-top: 1px solid #e6e9ef;
+  border-top: 1px solid #f8dddf;
   margin-top: 30px;
   padding: 20px 0;
 }
@@ -2742,7 +2742,7 @@ footer small {
 .lab-bars span {
   width: 100%;
   max-width: 35px;
-  background: #ad99dc;
+  background: #dc999f;
   border-radius: 4px 4px 0 0;
 }
 
@@ -2774,7 +2774,7 @@ footer small {
 
 .answer-grid article > span {
   font-size: 24px;
-  color: #c7bce8;
+  color: #e8bcc0;
 }
 
 .answer-grid h3 {
@@ -2789,8 +2789,8 @@ footer small {
 pre {
   overflow: auto;
   padding: 22px;
-  background: #262b40;
-  color: #d7d3f3;
+  background: #432325;
+  color: #f3d3d6;
   border-radius: 8px;
   font-size: 12px;
   line-height: 1.8;
@@ -2800,7 +2800,7 @@ input, select {
   font: inherit;
   font-size: 12px;
   padding: 8px 10px;
-  border: 1px solid #e1e5ed;
+  border: 1px solid #f7d7da;
   border-radius: 7px;
   background: var(--card);
   color: var(--fg);
@@ -2808,7 +2808,7 @@ input, select {
 }
 
 input:focus, select:focus {
-  outline: 2px solid #c5b7ed;
+  outline: 2px solid #edb7bc;
 }
 
 .btn:disabled {
@@ -2835,7 +2835,7 @@ input:focus, select:focus {
 }
 
 .bad {
-  color: #c74f58;
+  color: #c74f59;
 }
 
 /* Responsive Media Queries */

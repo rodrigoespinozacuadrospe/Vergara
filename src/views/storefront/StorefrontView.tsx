@@ -145,7 +145,7 @@ export const StorefrontView: React.FC = () => {
             <button
               onClick={() => setActiveView('gestion')}
               className="text-link-button"
-              style={{ background: 'none', border: 'none', color: '#3f5d50', cursor: 'pointer', padding: 0 }}
+              style={{ background: 'none', border: 'none', color: 'var(--accent)', cursor: 'pointer', padding: 0 }}
             >
               Centro de operaciones <Icon name="external" />
             </button>
