@@ -22,6 +22,8 @@ import ui
 
 
 ROOT = Path(__file__).resolve().parent
+PHOTOS = {name: f"photos/{name}.{'png' if name in ('arroz', 'aceite', 'cafe') else 'jpg'}"
+          for name in ('arroz', 'aceite', 'azucar', 'fideos', 'leche', 'cafe', 'detergente', 'galletas')}
 MODULES = {
     "dashboard": "Resumen general", "cliente": "Nuevo pedido",
     "ventas": "Pedidos y ventas", "almacen": "Control de inventario",
@@ -97,6 +99,7 @@ def create_app(config=None):
 
     app.jinja_env.filters["money"] = money
     app.jinja_env.globals.update(csrf_token=csrf_token, money=money)
+    app.jinja_env.globals["photo"] = lambda image: url_for("media", filename=PHOTOS.get(image, image + ".svg"))
 
     def allowed_modules():
         role = ROLES.get(session.get("role"), {})
@@ -120,6 +123,8 @@ def create_app(config=None):
         """Conserva los filtros al comprar sin aceptar redirecciones externas."""
         if request.form.get("return_to") == "cliente" and "cliente" in allowed_modules():
             return url_for("operations", module="cliente")
+        if request.form.get("return_to") == "product" and request.form.get("product_code") in {p["code"] for p in store.products()}:
+            return url_for("product", code=request.form["product_code"])
         return url_for("shop", q=request.form.get("q", "")[:200],
                        category=request.form.get("category", "Todos"),
                        sort=request.form.get("sort", "recommended"),
@@ -179,6 +184,31 @@ def create_app(config=None):
         favorites = session.get("favorites", [])
         session["favorites"] = [c for c in favorites if c != code] if code in favorites else favorites + [code]
         return redirect(catalog_destination())
+
+    @app.get("/product/<code>")
+    def product(code):
+        selected = product_by_code(code)
+        related = [p for p in store.products() if p["category"] == selected["category"] and p["code"] != code][:3]
+        return page(ui.PRODUCT, selected["name"], product=selected, related=related)
+
+    @app.post("/orders/<int:order_id>/reorder")
+    def reorder(order_id):
+        if order_id not in session.get("order_ids", []):
+            abort(404)
+        order = next((o for o in store.orders() if o["id"] == order_id), None)
+        if order is None:
+            abort(404)
+        def repeat():
+            products = {p["code"]: p for p in store.products()}
+            cart = session.get("cart", {}).copy()
+            for item in order["items"]:
+                p = products.get(item["code"])
+                quantity = cart.get(item["code"], 0) + item["quantity"]
+                if p is None or quantity > p["stock"]:
+                    raise ValueError(f"No hay stock suficiente para volver a pedir {item['name']}. Tu carrito no cambió.")
+                cart[item["code"]] = quantity
+            session["cart"] = cart
+        return action(repeat, url_for("cart"), "Agregamos los productos de tu pedido al carrito. Revisa cantidades y precios actuales.")
 
     @app.post("/cart/add/<code>")
     def cart_add(code):

@@ -217,6 +217,48 @@ class AppTests(unittest.TestCase):
         self.assertEqual(response.status_code, 400)
         self.assertIn("Elegir mi espacio", response.text)
 
+    def test_product_detail_uses_local_reference_photography(self):
+        from app import PHOTOS
+        for product in self.store.products():
+            with self.subTest(product=product["code"]):
+                response = self.client.get(f"/product/{product['code']}")
+                self.assertEqual(response.status_code, 200)
+                self.assertIn(product["name"], response.text)
+                self.assertIn("Fotografía referencial", response.text)
+                photo = self.client.get("/media/" + PHOTOS[product["image"]])
+                self.addCleanup(photo.close)
+                self.assertEqual(photo.status_code, 200)
+                self.assertTrue(photo.mimetype.startswith("image/"))
+                self.assertGreater(len(photo.data), 1000)
+        self.assertEqual(self.client.get("/product/no-existe").status_code, 404)
+        response = self.post("/cart/add/7750001", {"quantity": "2", "return_to": "product", "product_code": "7750001"}, follow=False)
+        self.assertEqual(response.headers["Location"], "/product/7750001")
+
+    def test_repeat_order_uses_current_stock_without_reserving_it(self):
+        order_id = self.place_order()
+        response = self.post(f"/orders/{order_id}/reorder")
+        self.assertEqual(response.status_code, 200)
+        with self.client.session_transaction() as state:
+            self.assertEqual(state["cart"], {"7750001": 2})
+        self.assertEqual(self.stock(), 118)
+        self.assertEqual(len(self.store.orders()), 1)
+        another = self.app.test_client()
+        with another.session_transaction() as state:
+            state["_csrf_token"] = "other-token"
+        self.assertEqual(another.post(f"/orders/{order_id}/reorder", data={"csrf_token": "other-token"}).status_code, 404)
+
+    def test_repeat_order_fails_atomically_if_stock_was_reduced(self):
+        self.post("/cart/add/7750001", {"quantity": "2"})
+        self.post("/cart/add/7750002", {"quantity": "2"})
+        self.post("/checkout", {"client_id": "0"})
+        order_id = self.store.orders()[0]["id"]
+        self.post("/cart/add/7750003", {"quantity": "1"})
+        self.store.adjust_stock("7750002", -31)
+        self.post(f"/orders/{order_id}/reorder")
+        with self.client.session_transaction() as state:
+            self.assertEqual(state["cart"], {"7750003": 1})
+        self.assertEqual(len(self.store.orders()), 1)
+
     def test_numpy_comparison_and_downloads(self):
         self.role("gerencia")
         raw = self.client.get("/operations/laboratorio").get_data(as_text=True)

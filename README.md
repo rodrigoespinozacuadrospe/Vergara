@@ -35,6 +35,8 @@ El cuaderno de arranque se genera con `python colab_launcher.py`; sus celdas tam
 
 - **Tienda:** ocho productos ilustrados, búsqueda, categorías, favoritos, ordenamiento, carrito con cantidades y stock, selección de cliente y seguimiento de los pedidos de la sesión.
 - **Compra sin perder el contexto:** cantidades desde el catálogo, conservación de filtros al agregar o guardar favoritos, resumen fijo del carrito en móviles y eliminación explícita de productos. Vaciar el carrito requiere confirmación; el stock solo se reserva al confirmar el pedido.
+- **Fotografías y fichas:** imágenes locales en portada, categorías, catálogo, carrito y operaciones; cada producto tiene ficha, fotografía ampliable y productos relacionados. Son referencias de categoría, no fotos de la marca, el tipo o el envase exactos del producto. Los créditos y las licencias de distribución de origen están en `assets/photos/SOURCES.md`.
+- **Volver a pedir:** los pedidos de la sesión se pueden copiar al carrito con los precios y el stock actuales. Si falta stock de algún artículo, el carrito permanece intacto; copiarlo no reserva inventario ni crea un pedido nuevo.
 - **Resumen general:** ventas, pedidos, entregas, alertas de stock y demanda estimada.
 - **Nuevo pedido y ventas:** registro de pedidos, filtro por estado y ventas por cliente.
 - **Inventario:** entradas y salidas por código, kardex, reposición EOQ y preparación de pedidos.
